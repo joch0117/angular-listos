@@ -1,0 +1,58 @@
+
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: listos_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend/public:/var/www/html/public
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - php
+    networks:
+      - listos_net
+
+  php:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: listos_php
+    volumes:
+      - ./back:/var/www/html
+    environment:
+      - APP_ENV=dev
+    networks:
+      - listos_net
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: listos_postgres
+    environment:
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: symfony
+      POSTGRES_DB: listos
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - listos_net
+
+  angular:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: listos_front
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./front:/app
+    networks:
+      - listos_net
+
+networks:
+  listos_net:
+
+volumes:
+  db_data:

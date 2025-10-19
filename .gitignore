@@ -1,0 +1,62 @@
+
+# ---------------------------
+# 🧩 1. Node / Angular
+# ---------------------------
+front/node_modules/
+front/dist/
+front/.angular/cache/
+front/.angular/
+front/.env
+front/package-lock.json
+
+# ---------------------------
+# 🧱 2. Symfony / PHP
+# ---------------------------
+back/vendor/
+back/var/
+back/.env.local
+back/.env.dev
+back/.env.test
+back/.phpunit.result.cache
+back/symfony.lock
+
+# ---------------------------
+# 🐘 3. Base de données / logs
+# ---------------------------
+*.sql
+*.sqlite
+*.log
+back/public/uploads/
+
+# ---------------------------
+# 🐳 4. Docker
+# ---------------------------
+docker-compose.override.yml
+.env.docker.local
+.docker/
+*.pid
+*.sock
+
+# ---------------------------
+# 🧰 5. IDE / OS
+# ---------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ---------------------------
+# 🧪 6. Tests / Coverage
+# ---------------------------
+coverage/
+tests/_output/
+phpunit.xml
+
+# ---------------------------
+# 📁 7. Divers
+# ---------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
