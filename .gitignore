@@ -36,6 +36,7 @@ docker-compose.override.yml
 .docker/
 *.pid
 *.sock
+.env
 
 # ---------------------------
 # 🧰 5. IDE / OS
@@ -60,3 +61,7 @@ phpunit.xml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env.prod
+
+docker-compose.prod.yml

@@ -6,7 +6,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./backend/public:/var/www/html/public
+      - ./back:/var/www/html/back
+      - /front/dist/listos:/var/www/html/front/dist/listos
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - php
@@ -29,11 +30,11 @@ services:
     image: postgres:15-alpine
     container_name: listos_postgres
     environment:
-      POSTGRES_USER: symfony
-      POSTGRES_PASSWORD: symfony
-      POSTGRES_DB: listos
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
@@ -48,6 +49,7 @@ services:
       - "4200:4200"
     volumes:
       - ./front:/app
+      - /app/node_modules
     networks:
       - listos_net
 

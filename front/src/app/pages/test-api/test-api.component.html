@@ -1,0 +1,16 @@
+<h2>Test API Symfony</h2>
+
+<div *ngIf="data; else loading">
+    <p><strong>Message :</strong> {{ data.message }}</p>
+    <p><strong>Status :</strong> {{ data.status }}</p>
+    <p><strong>Heure :</strong> {{ data.time }}</p>
+</div>
+
+<ng-template #loading>
+    <p>chargement des données ...</p>
+</ng-template>
+
+<div *ngIf="error" style="color:red;">
+    {{ error }}
+</div>
+
